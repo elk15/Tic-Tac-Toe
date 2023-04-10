@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@500;700&display=swap');
+:root {
+    --off-white: #F5F5F5;
+    --main-font: 'Press Start 2P', cursive;;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--off-white);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+}
+
+header {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+h1 {
+    font-family: var(--main-font);
+    margin-top: 2rem;
+}
+
+.info {
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-between;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.game-board {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    background-color: rgb(209, 209, 209);
+    max-width: 400px;
+    max-height: 400px;
+}
+
+
+    

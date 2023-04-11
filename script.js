@@ -15,13 +15,9 @@ const gameBoard = (() => {
     const board = [['', '', ''],
         ['', '', ''],
         ['', '', '']];
-    let playerTurn = 'O';
-    const makeMove = (mark, row, col) => {
-        if (board[row][col] != 'X' && board[row][col] != 'O') {
-            board[row][col] = mark;
-        }
-    };
-    const findPlayerTurn = () => playerTurn = playerTurn == 'X' ? 'O' : 'X';
+    let playerTurn = 'X';
+    let gameResult = '';
+    const switchPlayerTurn = () => (playerTurn == 'X' ? 'O' : 'X');
     const checkForWin = (mark) => {
         // check rows
         for (let row = 0; row < 3; row++) {
@@ -66,13 +62,31 @@ const gameBoard = (() => {
         }
     };
 
+    const checkForGameEnd = () => {
+        if (checkForWin('X')) {
+            return 'X';
+        } if (checkForWin('O')) {
+            return 'O';
+        } if (!isSpaceLeft()) {
+            return 'Tie';
+        }
+        return 'continue';
+    };
+    const makeMove = (row, col) => {
+        if (board[row][col] != 'X' && board[row][col] != 'O') {
+            board[row][col] = playerTurn;
+            playerTurn = switchPlayerTurn();
+            gameResult = checkForGameEnd();
+            if (gameResult != 'continue') {
+                resetBoard();
+                return gameResult;
+            }
+            return 'continue';
+        }
+    };
+
     return {
         makeMove,
-        findPlayerTurn,
-        checkForWin,
-        isSpaceLeft,
-        resetBoard,
-
     };
 })();
 

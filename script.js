@@ -1,3 +1,16 @@
+const Player = (mark) => {
+    let points = 0;
+    const getMark = () => mark;
+    const getPoints = () => points;
+    const addPoint = () => {
+        points += 1;
+    };
+    return { getMark, getPoints, addPoint };
+};
+
+const playerX = Player('X');
+const playerO = Player('O');
+
 const gameBoard = (() => {
     const board = [['', '', ''],
         ['', '', ''],
@@ -59,17 +72,33 @@ const gameBoard = (() => {
     };
 })();
 
-const displayController = (() => {
-    const squares = document.querySelectorAll('.square');
-    const displayMarks = () => {
-        squares.forEach((square) => {
-            // const newSpan = document.createElement('span');
-            // newSpan.classList.add(mark === 'X' ? 'red' : 'green');
-            // newSpan.textContent = mark;
-            // square.appendChild(newSpan);
-        });
+const Player = (mark) => {
+    let points = 0;
+    const getMark = () => mark;
+    const getPoints = () => points;
+    const addPoint = () => {
+        points += 1;
     };
-    return {
-        displayMarks,
-    };
-})();
+    return { getMark, getPoints, addPoint };
+};
+
+const playerX = Player('X');
+const playerO = Player('O');
+
+// const displayController = (() => {
+//     const squares = document.querySelectorAll('.square');
+//     const displayMarks = () => {
+//         squares.forEach((square) => {
+//             square.addEventListener('click', (e) => {
+//                 const newSpan = document.createElement('span');
+//             })
+//             // const newSpan = document.createElement('span');
+//             // newSpan.classList.add(mark === 'X' ? 'red' : 'green');
+//             // newSpan.textContent = mark;
+//             // square.appendChild(newSpan);
+//         });
+//     };
+//     return {
+//         displayMarks,
+//     };
+// })();

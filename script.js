@@ -92,6 +92,11 @@ const gameBoard = (() => {
 
 const displayController = (() => {
     const squares = document.querySelectorAll('.square');
+    const clearDisplay = () => {
+        squares.forEach((square) => {
+            square.innerHTML = '';
+        });
+    };
     const displayMarks = () => {
         squares.forEach((square) => {
             square.addEventListener('click', (e) => {
@@ -103,10 +108,13 @@ const displayController = (() => {
                     newSpan.classList.add(result == 'X' ? 'red' : 'green');
                     newSpan.textContent = result;
                     square.appendChild(newSpan);
+                } else {
+                    clearDisplay();
                 }
             });
         });
     };
+
     return {
         displayMarks,
     };

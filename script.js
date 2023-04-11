@@ -79,6 +79,12 @@ const gameBoard = (() => {
             gameResult = checkForGameEnd();
             if (gameResult != 'continue') {
                 resetBoard();
+                if (gameResult == 1) {
+                    playerX.addPoint();
+                }
+                if (gameResult == 2) {
+                    playerO.addPoint();
+                }
                 return gameResult;
             }
             return board[row][col];
@@ -92,10 +98,16 @@ const gameBoard = (() => {
 
 const displayController = (() => {
     const squares = document.querySelectorAll('.square');
+    const playerXPoints = document.querySelector('.playerX-points');
+    const playerOPoints = document.querySelector('.playerO-points');
     const clearDisplay = () => {
         squares.forEach((square) => {
             square.innerHTML = '';
         });
+    };
+    const displayPlayerPoints = () => {
+        playerXPoints.textContent = playerX.getPoints();
+        playerOPoints.textContent = playerO.getPoints();
     };
     const displayMarks = () => {
         squares.forEach((square) => {
@@ -110,6 +122,7 @@ const displayController = (() => {
                     square.appendChild(newSpan);
                 } else {
                     clearDisplay();
+                    displayPlayerPoints();
                 }
             });
         });

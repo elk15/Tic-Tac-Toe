@@ -2,6 +2,7 @@
 
 :root {
     --off-white: #F5F5F5;
+    --off-black: rgb(71, 68, 68);
     --light-grey: rgb(209, 209, 209);
     --green: #92ee8f;
     --red: #ff9c9c;
@@ -35,12 +36,16 @@ h1 {
     font-family: var(--main-font);
     margin-top: 2rem;
     font-size: 4rem;
+    color: var(--off-black);
 }
+
 
 .info {
     display: flex;
     max-width: 1200px;
     justify-content: space-between;
+    color: var(--off-black);
+    font-size: 1.5rem;
 }
 
 main {
@@ -65,19 +70,22 @@ main {
 }
 
 .square {
-    font-family: var(--main-font);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3.5rem;
 }
 
-.red-x {
+.red {
     color: var(--red);
 }
 
-.green-o {
+.green {
     color: var(--green);
+}
+
+.red, .green {
+    font-family: var(--main-font);
 }
 
 .game-end {
@@ -85,6 +93,7 @@ main {
     align-items: center;
     gap: 2rem;
     font-size: 2rem;
+    color: var(--off-black);
 }
 
 .play-again {
@@ -92,6 +101,11 @@ main {
     border-radius: 0.5rem;
     padding: 0.8rem;
     font-size: 1.3rem;
+    color: var(--off-black);
+}
+
+.hidden {
+    display: none;
 }
 
 

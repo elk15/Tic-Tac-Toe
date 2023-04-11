@@ -64,11 +64,11 @@ const gameBoard = (() => {
 
     const checkForGameEnd = () => {
         if (checkForWin('X')) {
-            return 'X';
+            return 1;
         } if (checkForWin('O')) {
-            return 'O';
+            return 2;
         } if (!isSpaceLeft()) {
-            return 'Tie';
+            return 0;
         }
         return 'continue';
     };
@@ -81,7 +81,7 @@ const gameBoard = (() => {
                 resetBoard();
                 return gameResult;
             }
-            return 'continue';
+            return board[row][col];
         }
     };
 
@@ -90,20 +90,26 @@ const gameBoard = (() => {
     };
 })();
 
-// const displayController = (() => {
-//     const squares = document.querySelectorAll('.square');
-//     const displayMarks = () => {
-//         squares.forEach((square) => {
-//             square.addEventListener('click', (e) => {
-//                 const newSpan = document.createElement('span');
-//             })
-//             // const newSpan = document.createElement('span');
-//             // newSpan.classList.add(mark === 'X' ? 'red' : 'green');
-//             // newSpan.textContent = mark;
-//             // square.appendChild(newSpan);
-//         });
-//     };
-//     return {
-//         displayMarks,
-//     };
-// })();
+const displayController = (() => {
+    const squares = document.querySelectorAll('.square');
+    const displayMarks = () => {
+        squares.forEach((square) => {
+            square.addEventListener('click', (e) => {
+                const { col } = e.target.dataset;
+                const { row } = e.target.dataset;
+                const result = gameBoard.makeMove(row, col);
+                if (result == 'X' || result == 'O') {
+                    const newSpan = document.createElement('span');
+                    newSpan.classList.add(result == 'X' ? 'red' : 'green');
+                    newSpan.textContent = result;
+                    square.appendChild(newSpan);
+                }
+            });
+        });
+    };
+    return {
+        displayMarks,
+    };
+})();
+
+displayController.displayMarks();

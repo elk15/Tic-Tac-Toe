@@ -15,11 +15,13 @@ const gameBoard = (() => {
     const board = [['', '', ''],
         ['', '', ''],
         ['', '', '']];
+    let playerTurn = 'O';
     const makeMove = (mark, row, col) => {
         if (board[row][col] != 'X' && board[row][col] != 'O') {
             board[row][col] = mark;
         }
     };
+    const findPlayerTurn = () => playerTurn = playerTurn == 'X' ? 'O' : 'X';
     const checkForWin = (mark) => {
         // check rows
         for (let row = 0; row < 3; row++) {
@@ -66,24 +68,13 @@ const gameBoard = (() => {
 
     return {
         makeMove,
+        findPlayerTurn,
         checkForWin,
         isSpaceLeft,
         resetBoard,
+
     };
 })();
-
-const Player = (mark) => {
-    let points = 0;
-    const getMark = () => mark;
-    const getPoints = () => points;
-    const addPoint = () => {
-        points += 1;
-    };
-    return { getMark, getPoints, addPoint };
-};
-
-const playerX = Player('X');
-const playerO = Player('O');
 
 // const displayController = (() => {
 //     const squares = document.querySelectorAll('.square');

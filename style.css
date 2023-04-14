@@ -105,6 +105,10 @@ main {
     color: var(--off-black);
 }
 
+.play-again:hover {
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }

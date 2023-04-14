@@ -73,15 +73,15 @@ const gameBoard = (() => {
 
     const finishGame = () => {
         if (!isSpaceLeft()) {
-            return "It's a tie!";
+            return "It's a tie! 😐";
         }
         if (checkForWin(playerX)) {
             playerX.addPoint();
-            return 'Player X wins!';
+            return 'Player X wins! 🎉';
         }
         if (checkForWin(playerO)) {
             playerO.addPoint();
-            return 'Player O wins!';
+            return 'Player O wins! 🎉';
         }
     };
 

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto:wght@500;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=Roboto:wght@500;700&display=swap');
 :root {
     --off-white: #F5F5F5;
     --off-black: rgb(71, 68, 68);
@@ -7,6 +6,7 @@
     --green: #92ee8f;
     --red: #ff9c9c;
     --main-font: 'Permanent Marker', cursive;
+    --title-font: 'Righteous', cursive;
 }
 
 
@@ -33,7 +33,7 @@ header {
 }
 
 h1 {
-    font-family: var(--main-font);
+    font-family: var(--title-font);
     margin-top: 2rem;
     font-size: 4rem;
     color: var(--off-black);
@@ -93,7 +93,7 @@ main {
     display: flex;
     align-items: center;
     gap: 2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--off-black);
 }
 
@@ -121,5 +121,8 @@ main {
     height: 350px;
 }
 
+footer {
+    margin-bottom: 0.5rem;
+}
 
     

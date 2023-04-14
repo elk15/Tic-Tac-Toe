@@ -108,6 +108,7 @@ const displayController = (() => {
     const gameEnd = document.querySelector('.game-end');
     const playAgainBtn = document.querySelector('.play-again');
     const endMessage = document.querySelector('.end-message');
+    const overlay = document.querySelector('.overlay');
 
     const clearDisplay = () => {
         squares.forEach((square) => {
@@ -121,6 +122,7 @@ const displayController = (() => {
     const endGameDisplay = (message) => {
         displayPlayerPoints();
         gameEnd.classList.remove('hidden');
+        overlay.classList.remove('hidden');
         endMessage.textContent = message;
     };
     const displayMarks = () => {
@@ -150,6 +152,7 @@ const displayController = (() => {
             gameBoard.resetBoard();
             clearDisplay();
             gameEnd.classList.add('hidden');
+            overlay.classList.add('hidden');
         });
     };
 

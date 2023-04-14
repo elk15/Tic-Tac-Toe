@@ -71,14 +71,16 @@ const gameBoard = (() => {
         return false;
     };
 
-    const getResultMessage = () => {
+    const finishGame = () => {
         if (!isSpaceLeft()) {
             return "It's a tie!";
         }
         if (checkForWin(playerX)) {
+            playerX.addPoint();
             return 'Player X wins!';
         }
         if (checkForWin(playerO)) {
+            playerO.addPoint();
             return 'Player O wins!';
         }
     };
@@ -93,7 +95,7 @@ const gameBoard = (() => {
         getCurrentMark,
         makeMove,
         checkIfGameOver,
-        getResultMessage,
+        finishGame,
         resetBoard,
         switchPlayerTurn,
     };
@@ -135,7 +137,7 @@ const displayController = (() => {
                 square.appendChild(newSpan);
 
                 if (gameBoard.checkIfGameOver()) {
-                    const message = gameBoard.getResultMessage();
+                    const message = gameBoard.finishGame();
                     endGameDisplay(message);
                 }
                 gameBoard.switchPlayerTurn();
@@ -143,9 +145,19 @@ const displayController = (() => {
         });
     };
 
+    const playAgainController = () => {
+        playAgainBtn.addEventListener('click', () => {
+            gameBoard.resetBoard();
+            clearDisplay();
+            gameEnd.classList.add('hidden');
+        });
+    };
+
     return {
         displayMarks,
+        playAgainController,
     };
 })();
 
 displayController.displayMarks();
+displayController.playAgainController();
